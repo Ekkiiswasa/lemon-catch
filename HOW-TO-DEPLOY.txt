@@ -1,0 +1,26 @@
+LEMON CATCH v1.1 — DEPLOY TO VERCEL
+=====================================
+
+STEP 1: Go to vercel.com → log in (or create free account with Google)
+
+STEP 2: Click "Add New Project"
+
+STEP 3: Click "Upload" and drag the entire "lemon-catch" folder in
+
+STEP 4: Vercel auto-detects everything. Just click "Deploy"
+
+STEP 5: Wait ~1 minute. You'll get a link like: lemon-catch.vercel.app
+
+STEP 6: On your phone, open the link in Safari
+        → Tap Share button → "Add to Home Screen" → "Add"
+
+Done! It lives on your home screen like a real app. 🍋
+
+TO SHARE WITH TESTERS:
+Just send them the Vercel link. Each person's data stays on their device.
+
+WHAT'S NEW IN v1.1:
+- Pink lemon background 🌸
+- Your logo in the header
+- Sigmar One font
+- Contact / About page with your details
