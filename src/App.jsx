@@ -203,10 +203,10 @@ function EditScreen({ card, onSave, onBack, onDelete }) {
                       fontFamily:"'DM Sans',sans-serif", fontSize:10, color:"#7a5520", boxSizing:"border-box"}}/>
                   <button onClick={()=>setForm(f=>({...f,photos:f.photos.filter((_,j)=>j!==i)}))}
                     style={{position:"absolute",top:3,right:3,background:"rgba(0,0,0,0.5)",
-                      border:"none",borderRadius:"50%",color:caught?"#fff":"#1A1A14",cursor:"pointer",
+                      border:"none",borderRadius:"50%",color:"#fff",cursor:"pointer",
                       fontSize:11,width:18,height:18,lineHeight:"18px",textAlign:"center",padding:0}}>×</button>
                   <span style={{position:"absolute",top:3,left:3,background:"rgba(200,144,10,0.85)",
-                    color:caught?"#fff":"#1A1A14",fontSize:8,borderRadius:4,padding:"1px 4px",fontWeight:700}}>{i+1}</span>
+                    color:"#fff",fontSize:8,borderRadius:4,padding:"1px 4px",fontWeight:700}}>{i+1}</span>
                 </div>
               ))}
             </div>
@@ -239,7 +239,7 @@ function EditScreen({ card, onSave, onBack, onDelete }) {
             {form.performance && (
               <button onClick={()=>onSave({...form, stage:"Performance"})}
                 style={{width:"100%", background:"#1A1A14", border:"none", borderRadius:12,
-                  color:caught?"#fff":"#1A1A14", cursor:"pointer", fontFamily:"'DM Sans',sans-serif",
+                  color:"#fff", cursor:"pointer", fontFamily:"'DM Sans',sans-serif",
                   fontSize:13, fontWeight:700, padding:"13px",
                   boxShadow:"0 3px 12px rgba(100,60,0,0.25)"}}>
                 Move to Performance →
@@ -277,7 +277,7 @@ function EditScreen({ card, onSave, onBack, onDelete }) {
                 fontSize:12, padding:"10px 18px"}}>Delete</button>
           )}
           <button onClick={()=>onSave(form)}
-            style={{background:"#F5C800", border:"none", borderRadius:12, color:caught?"#fff":"#1A1A14",
+            style={{background:"#F5C800", border:"none", borderRadius:12, color:"#fff",
               cursor:"pointer", fontFamily:"'DM Sans',sans-serif", fontSize:14,
               fontWeight:700, padding:"12px 36px", marginLeft:"auto",
               boxShadow:"0 3px 14px rgba(200,144,10,0.4)"}}>Save ✓</button>
@@ -335,7 +335,7 @@ function IdeaCard({ card, onClick, onMove, stages }) {
               <img src={p.src} style={{width:36,height:36,objectFit:"cover",
                 borderRadius:5,border:"1.5px solid rgba(200,180,60,0.4)"}}/>
               <span style={{position:"absolute",top:1,left:1,background:"rgba(200,144,10,0.85)",
-                color:caught?"#fff":"#1A1A14",fontSize:7,borderRadius:3,padding:"0 3px",fontWeight:700}}>{i+1}</span>
+                color:"#fff",fontSize:7,borderRadius:3,padding:"0 3px",fontWeight:700}}>{i+1}</span>
             </div>
           ))}
           {(card.photos||[]).length>4&&<span style={{fontSize:10,color:"#8A7040",
@@ -394,7 +394,7 @@ function IdeasScreen({ cards, onEdit, onMove, onCatch }) {
           {activeStage==="Ideas"?"📚 My Ideas":activeStage==="In Production"?"🎬 In Production":"🌟 Posted"}
         </h2>
         <button onClick={onCatch}
-          style={{background:"#F5C800", border:"none", borderRadius:12, color:caught?"#fff":"#1A1A14",
+          style={{background:"#F5C800", border:"none", borderRadius:12, color:"#1A1A14",
             cursor:"pointer", fontFamily:"'DM Sans',sans-serif",
             fontSize:13, fontWeight:700, padding:"10px 18px",
             boxShadow:"0 3px 12px rgba(200,144,10,0.35)"}}>
