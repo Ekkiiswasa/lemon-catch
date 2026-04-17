@@ -10,7 +10,7 @@ const EMPTY = { hook:"", body:"", cta:"", notes:"", stage:"Ideas", photos:[], st
 const PERF = {
   bad:  { emoji:"❌", label:"Didn't land",  color:"#c06050" },
   ok:   { emoji:"✅", label:"Did okay",     color:"#7a9a50" },
-  star: { emoji:"⭐", label:"Exceptional",  color:"#c8900a" },
+  star: { emoji:"⭐", label:"Exceptional",  color:"#F5C800" },
 };
 
 function persist(cards) {
@@ -25,7 +25,7 @@ function CopyBtn({ text, label="Copy", small }) {
     <button onClick={() => { navigator.clipboard.writeText(text||""); setDone(true); setTimeout(()=>setDone(false),1800); }}
       style={{ background: done?"#e8f5ec":"rgba(255,255,255,0.8)", border:"1px solid #d4c060",
         borderRadius:6, color: done?"#2a7a40":"#9a8050", cursor:"pointer",
-        fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize: small?10:11, padding: small?"2px 8px":"4px 10px" }}>
+        fontFamily:"'DM Sans',sans-serif", fontSize: small?10:11, padding: small?"2px 8px":"4px 10px" }}>
       {done ? "✓ Copied!" : label}
     </button>
   );
@@ -46,12 +46,12 @@ function CatchScreen({ onSave, onViewIdeas }) {
   };
 
   const inp = {
-    width:"100%", background:"rgba(255,252,240,0.9)", border:"1.5px solid #e0d070",
-    borderRadius:14, color:"#5c3d1e", fontFamily:"'Plus Jakarta Sans',sans-serif",
+    width:"100%", background:"#FFFFFF", border:"1.5px solid #e0d070",
+    borderRadius:14, color:"#1A1A14", fontFamily:"'DM Sans',sans-serif",
     fontSize:15, padding:"14px 16px", outline:"none", resize:"none",
     boxSizing:"border-box", lineHeight:1.65
   };
-  const lbl = { fontFamily:"'Caveat',cursive", fontSize:20, color:"#9a7c3a", marginBottom:6, display:"block" };
+  const lbl = { fontFamily:"'Caveat',cursive", fontSize:20, color:"#8A7040", marginBottom:6, display:"block" };
 
   return (
     <div style={{maxWidth:580, margin:"0 auto", padding:"32px 20px 40px"}}>
@@ -59,10 +59,10 @@ function CatchScreen({ onSave, onViewIdeas }) {
         <img src={LOGO_NOTXT} alt="Lemon Catch logo" 
           style={{width:64, height:64, objectFit:"contain"}}/>
         <div>
-          <h1 style={{fontFamily:"'Sigmar One',cursive", fontSize:32, color:"#c8900a", 
-            textShadow:"1px 2px 0 rgba(100,60,0,0.15)", lineHeight:1}}>Lemon Catch</h1>
-          <p style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12, 
-            color:"#9a7c3a", marginTop:3}}>Fresh ideas, instantly caught.</p>
+          <h1 style={{fontFamily:"'Syne',sans-serif", fontSize:32, color:"#5C2E00", 
+            textShadow:"none", lineHeight:1}}>Lemon Catch</h1>
+          <p style={{fontFamily:"'DM Sans',sans-serif", fontSize:12, 
+            color:"#8A7040", marginTop:3}}>Fresh ideas, instantly caught.</p>
         </div>
       </div>
 
@@ -78,17 +78,17 @@ function CatchScreen({ onSave, onViewIdeas }) {
         ))}
 
         <button onClick={handleCatch}
-          style={{background:caught?"#4a9a60":"#c8900a", border:"none", borderRadius:14,
-            color:"#fff", cursor:"pointer", fontFamily:"'Plus Jakarta Sans',sans-serif",
+          style={{background:caught?"#4a9a60":"#F5C800", border:"none", borderRadius:14,
+            color:caught?"#fff":"#1A1A14", cursor:"pointer", fontFamily:"'DM Sans',sans-serif",
             fontSize:15, fontWeight:700, padding:"16px",
-            boxShadow:`0 4px 20px rgba(${caught?"60,130,80":"200,144,10"},0.4)`,
+            boxShadow:`0 4px 20px rgba(${caught?"60,130,80":"245,200,0"},0.35)`,
             transition:"background 0.3s"}}>
           {caught ? "✓ Caught! Tap My Ideas to view →" : "Catch it →"}
         </button>
 
         <button onClick={onViewIdeas}
           style={{background:"none", border:"1.5px solid #d4c060", borderRadius:12,
-            color:"#7a5520", cursor:"pointer", fontFamily:"'Plus Jakarta Sans',sans-serif",
+            color:"#7a5520", cursor:"pointer", fontFamily:"'DM Sans',sans-serif",
             fontSize:13, padding:"12px", textAlign:"center"}}>
           📚 Go to My Ideas
         </button>
@@ -128,27 +128,27 @@ function EditScreen({ card, onSave, onBack, onDelete }) {
   ].filter(Boolean).join("\n\n");
 
   const inp = {
-    width:"100%", background:"rgba(255,252,240,0.9)", border:"1.5px solid #e0d070",
-    borderRadius:14, color:"#5c3d1e", fontFamily:"'Plus Jakarta Sans',sans-serif",
+    width:"100%", background:"#FFFFFF", border:"1.5px solid #e0d070",
+    borderRadius:14, color:"#1A1A14", fontFamily:"'DM Sans',sans-serif",
     fontSize:15, padding:"16px 18px", outline:"none", resize:"vertical",
     boxSizing:"border-box", lineHeight:1.7
   };
-  const lbl = { fontFamily:"'Caveat',cursive", fontSize:21, color:"#9a7c3a", marginBottom:8, display:"block" };
+  const lbl = { fontFamily:"'Caveat',cursive", fontSize:21, color:"#8A7040", marginBottom:8, display:"block" };
 
   return (
     <div style={{maxWidth:580, margin:"0 auto", padding:"28px 28px 80px"}}>
       <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:32,
         borderBottom:"1.5px solid rgba(200,180,60,0.3)", paddingBottom:20}}>
         <button onClick={onBack}
-          style={{background:"none", border:"none", cursor:"pointer", color:"#9a7c3a",
-            fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:15, fontWeight:600}}>
+          style={{background:"none", border:"none", cursor:"pointer", color:"#8A7040",
+            fontFamily:"'DM Sans',sans-serif", fontSize:15, fontWeight:600}}>
           ← Back
         </button>
         <div style={{display:"flex", gap:8, alignItems:"center"}}>
           <CopyBtn text={fullScript} label="📋 Copy all" />
           <select value={form.stage} onChange={set("stage")}
-            style={{background:"#fffbe8", border:"1.5px solid #d4c060", borderRadius:8,
-              color:"#7a5520", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:11, padding:"5px 10px"}}>
+            style={{background:"#FFFFFF", border:"1.5px solid #d4c060", borderRadius:8,
+              color:"#7a5520", fontFamily:"'DM Sans',sans-serif", fontSize:11, padding:"5px 10px"}}>
             {STAGES.map(s=><option key={s}>{s}</option>)}
             <option value="Performance">📊 Performance</option>
           </select>
@@ -181,7 +181,7 @@ function EditScreen({ card, onSave, onBack, onDelete }) {
             <label style={lbl}>📸 Photos / Assets</label>
             <label style={{background:"rgba(255,252,220,0.9)", border:"1.5px solid #d4c060",
               borderRadius:8, color:"#7a5520", cursor:"pointer",
-              fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:11, padding:"5px 14px"}}>
+              fontFamily:"'DM Sans',sans-serif", fontSize:11, padding:"5px 14px"}}>
               + Add photos
               <input type="file" accept="image/*" multiple
                 onChange={e=>{addPhotos(e.target.files);e.target.value="";}} style={{display:"none"}}/>
@@ -189,7 +189,7 @@ function EditScreen({ card, onSave, onBack, onDelete }) {
           </div>
           {(form.photos||[]).length===0 ? (
             <div style={{border:"1.5px dashed #d4c060", borderRadius:14, padding:"20px 16px",
-              textAlign:"center", color:"#b0a060", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12}}>
+              textAlign:"center", color:"#A09060", fontFamily:"'DM Sans',sans-serif", fontSize:12}}>
               No photos yet — tap "+ Add photos"
             </div>
           ) : (
@@ -200,13 +200,13 @@ function EditScreen({ card, onSave, onBack, onDelete }) {
                   <input value={p.caption||""} placeholder={`Slide ${i+1}...`}
                     onChange={e=>setForm(f=>({...f,photos:f.photos.map((x,j)=>j===i?{...x,caption:e.target.value}:x)}))}
                     style={{width:"100%", background:"none", border:"none", outline:"none", padding:"4px 6px",
-                      fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:10, color:"#7a5520", boxSizing:"border-box"}}/>
+                      fontFamily:"'DM Sans',sans-serif", fontSize:10, color:"#7a5520", boxSizing:"border-box"}}/>
                   <button onClick={()=>setForm(f=>({...f,photos:f.photos.filter((_,j)=>j!==i)}))}
                     style={{position:"absolute",top:3,right:3,background:"rgba(0,0,0,0.5)",
-                      border:"none",borderRadius:"50%",color:"#fff",cursor:"pointer",
+                      border:"none",borderRadius:"50%",color:caught?"#fff":"#1A1A14",cursor:"pointer",
                       fontSize:11,width:18,height:18,lineHeight:"18px",textAlign:"center",padding:0}}>×</button>
                   <span style={{position:"absolute",top:3,left:3,background:"rgba(200,144,10,0.85)",
-                    color:"#fff",fontSize:8,borderRadius:4,padding:"1px 4px",fontWeight:700}}>{i+1}</span>
+                    color:caught?"#fff":"#1A1A14",fontSize:8,borderRadius:4,padding:"1px 4px",fontWeight:700}}>{i+1}</span>
                 </div>
               ))}
             </div>
@@ -215,10 +215,10 @@ function EditScreen({ card, onSave, onBack, onDelete }) {
 
         {/* Rate & move to Performance — shown when in Posted */}
         {form.stage==="Posted" && (
-          <div style={{background:"rgba(255,252,235,0.95)", borderRadius:16, padding:20,
+          <div style={{background:"#FFFFFF", borderRadius:16, padding:20,
             border:"1.5px solid #e0d070"}}>
             <label style={{...lbl, marginBottom:14}}>📊 Rate & move to Performance</label>
-            <p style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12, color:"#9a8c6a",
+            <p style={{fontFamily:"'DM Sans',sans-serif", fontSize:12, color:"#A09060",
               marginBottom:16, lineHeight:1.5}}>
               Once you have the data, rate this post and it'll move to your Performance tab.
             </p>
@@ -226,20 +226,20 @@ function EditScreen({ card, onSave, onBack, onDelete }) {
               {Object.entries(PERF).map(([k,p])=>(
                 <button key={k} onClick={()=>setForm(f=>({...f,performance:f.performance===k?null:k}))}
                   style={{flex:1, background:form.performance===k?p.color+"22":"rgba(255,255,255,0.8)",
-                    border:`2px solid ${form.performance===k?p.color:"#d4c060"}`,
+                    border:`2px solid ${form.performance===k?p.color:"#EDE8D8"}`,
                     borderRadius:14, padding:"14px 8px", cursor:"pointer",
                     display:"flex", flexDirection:"column", alignItems:"center", gap:6,
                     transition:"all 0.15s"}}>
                   <span style={{fontSize:26}}>{p.emoji}</span>
-                  <span style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:10,
-                    color:form.performance===k?p.color:"#9a8c60", fontWeight:600}}>{p.label}</span>
+                  <span style={{fontFamily:"'DM Sans',sans-serif", fontSize:10,
+                    color:form.performance===k?p.color:"#A09060", fontWeight:600}}>{p.label}</span>
                 </button>
               ))}
             </div>
             {form.performance && (
               <button onClick={()=>onSave({...form, stage:"Performance"})}
-                style={{width:"100%", background:"#6b4423", border:"none", borderRadius:12,
-                  color:"#fff", cursor:"pointer", fontFamily:"'Plus Jakarta Sans',sans-serif",
+                style={{width:"100%", background:"#1A1A14", border:"none", borderRadius:12,
+                  color:caught?"#fff":"#1A1A14", cursor:"pointer", fontFamily:"'DM Sans',sans-serif",
                   fontSize:13, fontWeight:700, padding:"13px",
                   boxShadow:"0 3px 12px rgba(100,60,0,0.25)"}}>
                 Move to Performance →
@@ -250,18 +250,18 @@ function EditScreen({ card, onSave, onBack, onDelete }) {
 
         {/* Performance rating — shown when already in Performance */}
         {form.stage==="Performance" && (
-          <div style={{background:"rgba(255,252,235,0.95)", borderRadius:16, padding:20, border:"1.5px solid #e0d070"}}>
+          <div style={{background:"#FFFFFF", borderRadius:16, padding:20, border:"1.5px solid #e0d070"}}>
             <label style={lbl}>📊 How did it perform?</label>
             <div style={{display:"flex", gap:10}}>
               {Object.entries(PERF).map(([k,p])=>(
                 <button key={k} onClick={()=>setForm(f=>({...f,performance:f.performance===k?null:k}))}
                   style={{flex:1, background:form.performance===k?p.color+"22":"rgba(255,255,255,0.8)",
-                    border:`2px solid ${form.performance===k?p.color:"#d4c060"}`,
+                    border:`2px solid ${form.performance===k?p.color:"#EDE8D8"}`,
                     borderRadius:14, padding:"14px 8px", cursor:"pointer",
                     display:"flex", flexDirection:"column", alignItems:"center", gap:6}}>
                   <span style={{fontSize:26}}>{p.emoji}</span>
-                  <span style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:10,
-                    color:form.performance===k?p.color:"#9a8c60", fontWeight:600}}>{p.label}</span>
+                  <span style={{fontFamily:"'DM Sans',sans-serif", fontSize:10,
+                    color:form.performance===k?p.color:"#A09060", fontWeight:600}}>{p.label}</span>
                 </button>
               ))}
             </div>
@@ -273,12 +273,12 @@ function EditScreen({ card, onSave, onBack, onDelete }) {
           {onDelete && (
             <button onClick={()=>{if(confirm("Delete this idea?"))onDelete(form.id);}}
               style={{background:"none", border:"1.5px solid #e8b0a0", borderRadius:10,
-                color:"#c06050", cursor:"pointer", fontFamily:"'Plus Jakarta Sans',sans-serif",
+                color:"#c06050", cursor:"pointer", fontFamily:"'DM Sans',sans-serif",
                 fontSize:12, padding:"10px 18px"}}>Delete</button>
           )}
           <button onClick={()=>onSave(form)}
-            style={{background:"#c8900a", border:"none", borderRadius:12, color:"#fff",
-              cursor:"pointer", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:14,
+            style={{background:"#F5C800", border:"none", borderRadius:12, color:caught?"#fff":"#1A1A14",
+              cursor:"pointer", fontFamily:"'DM Sans',sans-serif", fontSize:14,
               fontWeight:700, padding:"12px 36px", marginLeft:"auto",
               boxShadow:"0 3px 14px rgba(200,144,10,0.4)"}}>Save ✓</button>
         </div>
@@ -307,7 +307,7 @@ function IdeaCard({ card, onClick, onMove, stages }) {
 
       <div style={{display:"flex", justifyContent:"space-between", marginBottom:8}}>
         <span style={{display:"flex", alignItems:"center", gap:5,
-          fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:10,
+          fontFamily:"'DM Sans',sans-serif", fontSize:10,
           color:s.dot, textTransform:"uppercase", fontWeight:600, letterSpacing:"0.08em"}}>
           <span style={{width:6,height:6,borderRadius:"50%",background:s.dot,display:"inline-block"}}/>
           {card.stage}
@@ -317,12 +317,12 @@ function IdeaCard({ card, onClick, onMove, stages }) {
         )}
       </div>
 
-      <p style={{fontFamily:"'Caveat',cursive", fontSize:17, fontWeight:600, color:"#5c3d1e",
+      <p style={{fontFamily:"'Caveat',cursive", fontSize:17, fontWeight:600, color:"#1A1A14",
         margin:"0 0 5px", lineHeight:1.4,
         display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical",overflow:"hidden"}}>
         {card.hook||card.body||"Untitled idea..."}
       </p>
-      {card.body&&<p style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:11,
+      {card.body&&<p style={{fontFamily:"'DM Sans',sans-serif", fontSize:11,
         color:"#8a7c50", margin:"0 0 8px", lineHeight:1.4,
         display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical",overflow:"hidden"}}>
         {card.body}
@@ -335,18 +335,18 @@ function IdeaCard({ card, onClick, onMove, stages }) {
               <img src={p.src} style={{width:36,height:36,objectFit:"cover",
                 borderRadius:5,border:"1.5px solid rgba(200,180,60,0.4)"}}/>
               <span style={{position:"absolute",top:1,left:1,background:"rgba(200,144,10,0.85)",
-                color:"#fff",fontSize:7,borderRadius:3,padding:"0 3px",fontWeight:700}}>{i+1}</span>
+                color:caught?"#fff":"#1A1A14",fontSize:7,borderRadius:3,padding:"0 3px",fontWeight:700}}>{i+1}</span>
             </div>
           ))}
-          {(card.photos||[]).length>4&&<span style={{fontSize:10,color:"#9a7c3a",
-            fontFamily:"'Plus Jakarta Sans',sans-serif",alignSelf:"center"}}>
+          {(card.photos||[]).length>4&&<span style={{fontSize:10,color:"#8A7040",
+            fontFamily:"'DM Sans',sans-serif",alignSelf:"center"}}>
             +{(card.photos||[]).length-4}
           </span>}
         </div>
       )}
       {card.link&&<a href={card.link} target="_blank" rel="noopener noreferrer"
         onClick={e=>e.stopPropagation()}
-        style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:10,
+        style={{fontFamily:"'DM Sans',sans-serif",fontSize:10,
           color:"#2a7a4a",textDecoration:"none",display:"block",marginTop:4}}>
         🔗 View post
       </a>}
@@ -358,13 +358,13 @@ function IdeaCard({ card, onClick, onMove, stages }) {
             <button onClick={()=>onMove(card.id,stages.prev)}
               style={{background:"rgba(255,255,255,0.7)",border:`1px solid ${s.border}`,
                 borderRadius:6,color:"#7a6a30",cursor:"pointer",fontSize:10,
-                fontFamily:"'Plus Jakarta Sans',sans-serif",padding:"3px 8px"}}>← Back</button>
+                fontFamily:"'DM Sans',sans-serif",padding:"3px 8px"}}>← Back</button>
           )}
           {stages.next&&(
             <button onClick={()=>onMove(card.id,stages.next)}
               style={{background:"rgba(255,255,255,0.7)",border:`1px solid ${s.border}`,
                 borderRadius:6,color:"#7a5520",cursor:"pointer",fontSize:10,
-                fontFamily:"'Plus Jakarta Sans',sans-serif",padding:"3px 8px"}}>
+                fontFamily:"'DM Sans',sans-serif",padding:"3px 8px"}}>
               → {stages.next}
             </button>
           )}
@@ -390,12 +390,12 @@ function IdeasScreen({ cards, onEdit, onMove, onCatch }) {
   return (
     <div style={{maxWidth:900, margin:"0 auto", padding:"28px 20px 40px"}}>
       <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:24}}>
-        <h2 style={{fontFamily:"'Sigmar One',cursive", fontSize:32, color:"#6b4423"}}>
+        <h2 style={{fontFamily:"'Syne',sans-serif", fontSize:32, color:"#1A1A14"}}>
           {activeStage==="Ideas"?"📚 My Ideas":activeStage==="In Production"?"🎬 In Production":"🌟 Posted"}
         </h2>
         <button onClick={onCatch}
-          style={{background:"#c8900a", border:"none", borderRadius:12, color:"#fff",
-            cursor:"pointer", fontFamily:"'Plus Jakarta Sans',sans-serif",
+          style={{background:"#F5C800", border:"none", borderRadius:12, color:caught?"#fff":"#1A1A14",
+            cursor:"pointer", fontFamily:"'DM Sans',sans-serif",
             fontSize:13, fontWeight:700, padding:"10px 18px",
             boxShadow:"0 3px 12px rgba(200,144,10,0.35)"}}>
           + Catch an Idea
@@ -406,13 +406,13 @@ function IdeasScreen({ cards, onEdit, onMove, onCatch }) {
         {STAGES.map(s=>(
           <button key={s} onClick={()=>setActiveStage(s)}
             style={{background:"none", border:"none",
-              borderBottom:activeStage===s?`3px solid ${tabColors[s]}`:"3px solid transparent",
-              color:activeStage===s?"#5c3d1e":"#9a8c60", cursor:"pointer",
-              fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12,
+              borderBottom:activeStage===s?`2px solid #F5C800`:"2px solid transparent",
+              color:activeStage===s?"#1A1A14":"#A09060", cursor:"pointer",
+              fontFamily:"'DM Sans',sans-serif", fontSize:12,
               padding:"8px 16px", marginBottom:-2, fontWeight:activeStage===s?700:400}}>
             {s}
             <span style={{marginLeft:6, background:activeStage===s?tabColors[s]+"22":"rgba(200,180,60,0.1)",
-              color:activeStage===s?tabColors[s]:"#9a8c60",
+              color:activeStage===s?tabColors[s]:"#A09060",
               borderRadius:10, fontSize:10, padding:"1px 7px"}}>
               {stageCounts[s]}
             </span>
@@ -422,7 +422,7 @@ function IdeasScreen({ cards, onEdit, onMove, onCatch }) {
 
       {visible.length===0 ? (
         <div style={{textAlign:"center", padding:"60px 20px",
-          fontFamily:"'Caveat',cursive", fontSize:22, color:"#b0a060"}}>
+          fontFamily:"'Caveat',cursive", fontSize:22, color:"#A09060"}}>
           <div style={{fontSize:40, marginBottom:12}}>
             {activeStage==="Ideas"?"🍋":activeStage==="In Production"?"🎬":"🌟"}
           </div>
@@ -453,10 +453,10 @@ function PerformanceScreen({ cards, onEdit, onMove }) {
   return (
     <div style={{maxWidth:900, margin:"0 auto", padding:"28px 20px 40px"}}>
       <div style={{marginBottom:28}}>
-        <h2 style={{fontFamily:"'Caveat',cursive", fontSize:36, fontWeight:700, color:"#6b4423", marginBottom:4}}>
+        <h2 style={{fontFamily:"'Caveat',cursive", fontSize:36, fontWeight:700, color:"#1A1A14", marginBottom:4}}>
           📊 Performance
         </h2>
-        <p style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12, color:"#9a8c6a"}}>
+        <p style={{fontFamily:"'DM Sans',sans-serif", fontSize:12, color:"#A09060"}}>
           {perfCards.length} pieces rated · spot your patterns
         </p>
       </div>
@@ -464,32 +464,32 @@ function PerformanceScreen({ cards, onEdit, onMove }) {
       {/* Summary row */}
       <div style={{display:"flex", gap:10, marginBottom:24, flexWrap:"wrap"}}>
         {Object.entries(PERF).map(([k,p])=>(
-          <div key={k} style={{flex:1, minWidth:90, background:"rgba(255,252,235,0.9)",
-            border:`2px solid ${perfFilter===k?p.color:"#e0d070"}`, borderRadius:14,
+          <div key={k} style={{flex:1, minWidth:90, background:"#FFFFFF",
+            border:`2px solid ${perfFilter===k?p.color:"#EDE8D8"}`, borderRadius:14,
             padding:"14px 10px", textAlign:"center", cursor:"pointer",
             boxShadow: perfFilter===k?`0 3px 12px ${p.color}33`:"none"}}
             onClick={()=>setPerfFilter(perfFilter===k?"all":k)}>
             <div style={{fontSize:28, marginBottom:4}}>{p.emoji}</div>
-            <div style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:11,
+            <div style={{fontFamily:"'DM Sans',sans-serif", fontSize:11,
               color:p.color, fontWeight:700}}>{counts[k]||0}</div>
-            <div style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:10,
-              color:"#9a8c6a"}}>{p.label}</div>
+            <div style={{fontFamily:"'DM Sans',sans-serif", fontSize:10,
+              color:"#A09060"}}>{p.label}</div>
           </div>
         ))}
-        <div style={{flex:1, minWidth:90, background:"rgba(255,252,235,0.9)",
-          border:`2px solid ${perfFilter==="all"?"#c8900a":"#e0d070"}`, borderRadius:14,
+        <div style={{flex:1, minWidth:90, background:"#FFFFFF",
+          border:`2px solid ${perfFilter==="all"?"#F5C800":"#EDE8D8"}`, borderRadius:14,
           padding:"14px 10px", textAlign:"center", cursor:"pointer"}}
           onClick={()=>setPerfFilter("all")}>
           <div style={{fontSize:28, marginBottom:4}}>📋</div>
-          <div style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:11,
-            color:"#c8900a", fontWeight:700}}>{perfCards.length}</div>
-          <div style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:10, color:"#9a8c6a"}}>All</div>
+          <div style={{fontFamily:"'DM Sans',sans-serif", fontSize:11,
+            color:"#F5C800", fontWeight:700}}>{perfCards.length}</div>
+          <div style={{fontFamily:"'DM Sans',sans-serif", fontSize:10, color:"#A09060"}}>All</div>
         </div>
       </div>
 
       {filtered.length===0 ? (
         <div style={{textAlign:"center", padding:"60px 20px",
-          fontFamily:"'Caveat',cursive", fontSize:22, color:"#b0a060"}}>
+          fontFamily:"'Caveat',cursive", fontSize:22, color:"#A09060"}}>
           <div style={{fontSize:40, marginBottom:12}}>📊</div>
           <p>{perfCards.length===0 ?
             "No performance data yet — move posted content here after it goes live." :
@@ -517,43 +517,43 @@ function ContactScreen() {
       </div>
 
       {/* About card */}
-      <div style={{background:"rgba(255,252,235,0.95)", borderRadius:20,
+      <div style={{background:"#FFFFFF", borderRadius:20,
         border:"1.5px solid #d4c060", padding:"24px 22px", marginBottom:16,
         boxShadow:"0 3px 16px rgba(100,80,0,0.08)"}}>
-        <h2 style={{fontFamily:"'Caveat',cursive", fontSize:26, color:"#6b4423", marginBottom:14}}>
+        <h2 style={{fontFamily:"'Caveat',cursive", fontSize:26, color:"#1A1A14", marginBottom:14}}>
           About Lemon Catch
         </h2>
-        <p style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, color:"#6a5a3a",
+        <p style={{fontFamily:"'DM Sans',sans-serif", fontSize:13, color:"#6a5a3a",
           lineHeight:1.7, marginBottom:12}}>
           Your best ideas don't come when you're sitting at your desk trying to think. They come in the middle of everyday life. And that's exactly when you need to catch them.
         </p>
-        <p style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, color:"#6a5a3a",
+        <p style={{fontFamily:"'DM Sans',sans-serif", fontSize:13, color:"#6a5a3a",
           lineHeight:1.7, marginBottom:12}}>
           The problem is there's no good tool for content creators to do this. Notes apps are messy. Notion is too big. Nothing is built for how modern creators actually work.
         </p>
-        <p style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, color:"#6a5a3a",
+        <p style={{fontFamily:"'DM Sans',sans-serif", fontSize:13, color:"#6a5a3a",
           lineHeight:1.7, marginBottom:12}}>
           So I built Lemon Catch. Designed around how content is actually structured, with a workflow that feels intuitive from the first idea all the way to tracking performance. Simple, focused, and made for the way you actually create.
         </p>
-        <p style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, color:"#6a5a3a",
+        <p style={{fontFamily:"'DM Sans',sans-serif", fontSize:13, color:"#6a5a3a",
           lineHeight:1.7}}>
           Lemon Catch is currently in beta. If you enjoy using it, have thoughts on what's missing, or features you'd love to see — I'd love to hear from you. Reach out at kontakt@contentbutiken.se
         </p>
       </div>
 
       {/* Developer card */}
-      <div style={{background:"rgba(255,252,235,0.95)", borderRadius:20,
+      <div style={{background:"#FFFFFF", borderRadius:20,
         border:"1.5px solid #d4c060", padding:"24px 22px", marginBottom:16,
         boxShadow:"0 3px 16px rgba(100,80,0,0.08)"}}>
-        <h2 style={{fontFamily:"'Caveat',cursive", fontSize:26, color:"#6b4423", marginBottom:18}}>
+        <h2 style={{fontFamily:"'Caveat',cursive", fontSize:26, color:"#1A1A14", marginBottom:18}}>
           The Developer 👋
         </h2>
 
         <div style={{display:"flex", flexDirection:"column", gap:12}}>
-          <div style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:14, color:"#5c3d1e", fontWeight:700}}>
+          <div style={{fontFamily:"'DM Sans',sans-serif", fontSize:14, color:"#1A1A14", fontWeight:700}}>
             Jessica Börjesson
           </div>
-          <div style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12, color:"#7a6a40"}}>
+          <div style={{fontFamily:"'DM Sans',sans-serif", fontSize:12, color:"#7a6a40"}}>
             Petite Content Productions AB
           </div>
 
@@ -563,8 +563,8 @@ function ContactScreen() {
               background:"rgba(255,255,255,0.8)", border:"1.5px solid #e0d070",
               borderRadius:12, padding:"12px 14px"}}>
             <span style={{fontSize:20}}>✉️</span>
-            <span style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12,
-              color:"#5c3d1e", fontWeight:600}}>kontakt@contentbutiken.se</span>
+            <span style={{fontFamily:"'DM Sans',sans-serif", fontSize:12,
+              color:"#1A1A14", fontWeight:600}}>kontakt@contentbutiken.se</span>
           </a>
 
           {/* Instagram - Swedish */}
@@ -574,12 +574,12 @@ function ContactScreen() {
               borderRadius:12, padding:"12px 14px"}}>
             <span style={{fontSize:20}}>📸</span>
             <div style={{flex:1}}>
-              <div style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12,
-                color:"#5c3d1e", fontWeight:600}}>@jessica.m.borjesson</div>
-              <div style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:10,
-                color:"#9a8c6a"}}>🇸🇪 Swedish content</div>
+              <div style={{fontFamily:"'DM Sans',sans-serif", fontSize:12,
+                color:"#1A1A14", fontWeight:600}}>@jessica.m.borjesson</div>
+              <div style={{fontFamily:"'DM Sans',sans-serif", fontSize:10,
+                color:"#A09060"}}>🇸🇪 Swedish content</div>
             </div>
-            <span style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:10, color:"#b0a060"}}>↗</span>
+            <span style={{fontFamily:"'DM Sans',sans-serif", fontSize:10, color:"#A09060"}}>↗</span>
           </a>
 
           {/* Instagram - English */}
@@ -589,18 +589,18 @@ function ContactScreen() {
               borderRadius:12, padding:"12px 14px"}}>
             <span style={{fontSize:20}}>📸</span>
             <div style={{flex:1}}>
-              <div style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12,
-                color:"#5c3d1e", fontWeight:600}}>@scandi.jess</div>
-              <div style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:10,
-                color:"#9a8c6a"}}>🇬🇧 English content</div>
+              <div style={{fontFamily:"'DM Sans',sans-serif", fontSize:12,
+                color:"#1A1A14", fontWeight:600}}>@scandi.jess</div>
+              <div style={{fontFamily:"'DM Sans',sans-serif", fontSize:10,
+                color:"#A09060"}}>🇬🇧 English content</div>
             </div>
-            <span style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:10, color:"#b0a060"}}>↗</span>
+            <span style={{fontFamily:"'DM Sans',sans-serif", fontSize:10, color:"#A09060"}}>↗</span>
           </a>
         </div>
       </div>
 
       {/* Feedback nudge */}
-      <p style={{fontFamily:"'Caveat',cursive", fontSize:18, color:"#b0a060",
+      <p style={{fontFamily:"'Caveat',cursive", fontSize:18, color:"#A09060",
         textAlign:"center", lineHeight:1.6}}>
         Questions, feedback, bugs? <br/>Reach out — it genuinely helps! 🍋
       </p>
@@ -636,7 +636,7 @@ export default function App() {
 
   const openEdit = (card, from) => { setPrevScreen(from); setEditing(card); setScreen("edit"); };
 
-  const navBg = "rgba(255,252,235,0.97)";
+  const navBg = "rgba(255,253,247,0.97)";
   const navItems = [
     {key:"catch", icon:"🎣", label:"Catch"},
     {key:"ideas", icon:"📚", label:"My Ideas"},
@@ -647,7 +647,7 @@ export default function App() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Sigmar+One&family=Caveat:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Caveat:wght@500;700&family=DM+Sans:wght@400;500;600;700&display=swap');
         *{box-sizing:border-box;margin:0;padding:0;}
         body{background:#f5f0dc;}
         ::-webkit-scrollbar{width:4px;}
@@ -657,8 +657,8 @@ export default function App() {
 
       <div style={{position:"fixed",inset:0,zIndex:0,
         backgroundImage:`url('data:image/jpeg;base64,${LEMON_BG}')`,
-        backgroundRepeat:"repeat",backgroundSize:"320px auto",opacity:0.3}}/>
-      <div style={{position:"fixed",inset:0,zIndex:1,background:"rgba(255,240,245,0.72)"}}/>
+        backgroundRepeat:"repeat",backgroundSize:"320px auto",opacity:0.08}}/>
+      <div style={{position:"fixed",inset:0,zIndex:1,background:"rgba(255,253,247,0.85)"}}/>
 
       <div style={{position:"relative",zIndex:2,minHeight:"100vh",paddingBottom:80}}>
         {screen==="catch" && <CatchScreen onSave={addCard} onViewIdeas={()=>setScreen("ideas")}/>}
@@ -681,8 +681,8 @@ export default function App() {
                 borderTop:screen===tab.key?"3px solid #c8900a":"3px solid transparent",
                 display:"flex", flexDirection:"column", alignItems:"center", gap:3}}>
               <span style={{fontSize:24}}>{tab.icon}</span>
-              <span style={{fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:11,
-                color:screen===tab.key?"#c8900a":"#9a8c60",
+              <span style={{fontFamily:"'DM Sans',sans-serif", fontSize:11,
+                color:screen===tab.key?"#F5C800":"#A09060",
                 fontWeight:screen===tab.key?700:400}}>
                 {tab.label}
               </span>
